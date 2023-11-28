@@ -1,0 +1,4 @@
+# Para gerar os arquivos de saída dos exemplo, execute:
+./emparelha g-1.in.txt >g-1.out.txt
+./emparelha g-2.in.txt >g-2.out.txt
+./emparelha g-3.in.txt >g-3.out.txt
