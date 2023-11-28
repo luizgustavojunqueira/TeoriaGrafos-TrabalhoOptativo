@@ -146,17 +146,17 @@ public:
                 {
                     visitados[u] = true;
                     predecessores[u] = v;
-                    if (emp.verificaSaturacao(u))
+                    if (!emp.verificaSaturacao(u))
                     {
                         return u;
                     }
                     else
                     {
                         int w = encontraVerticeEmparelhado(u);
+                        predecessores[w] = u;
                         x = buscaRec(w);
                     }
                 }
-
                 if (x != -1)
                 {
                     return x;
@@ -242,15 +242,6 @@ int main(int argv, char **argc)
     grafo.emp = emp;
     grafo.defineSaturadosEInsaturados();
 
-    for(int i = 0; i < grafo.numVertices; i++){
-        cout << "V: " << i << " ";
-        for(int j = 0; j < grafo.listaAdjacencia[i].vizinhos.size(); j++){
-
-            cout << " " << grafo.listaAdjacencia[i].vizinhos[j];
-        }
-        cout << endl;
-    }
-
     cout << "Saturados: " << endl;
 
     for (int i = 0; i < grafo.verticesSaturados.size(); i++)
@@ -261,7 +252,9 @@ int main(int argv, char **argc)
     for (int i = 0; i < grafo.verticesInsaturados.size(); i++)
         std::cout << " " << grafo.verticesInsaturados[i] << std::endl;
 
-    int a = grafo.busca(0);
+    int a = grafo.busca(1);
+
+    cout << "A: " << a << endl;
 
     for (int i = 0; i < grafo.predecessores.size(); i++)
     {
